@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VentaAparatosElectronicos.FacturasPage"
+             Title="Facturas">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="10">
+            <Label Text="Facturas"
+                   FontAttributes="Bold"
+                   FontSize="20" />
+
+            <ListView x:Name="facturasListView"
+                      ItemSelected="OnItemSelected"
+                      HeightRequest="200">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding ClienteNombre}"
+                                  Detail="{Binding Total, StringFormat='Total: {0:C}'}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Entry x:Name="clienteNombreEntry" Placeholder="Nombre del cliente" />
+            <Entry x:Name="totalEntry" Placeholder="Total" Keyboard="Numeric" />
+
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Button Text="Agregar" Clicked="OnAgregarClicked" />
+                <Button Text="Eliminar seleccionado" Clicked="OnEliminarClicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

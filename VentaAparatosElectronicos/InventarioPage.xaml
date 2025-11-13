@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VentaAparatosElectronicos.InventarioPage"
+             Title="Inventario">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="10">
+            <Label Text="Inventario de aparatos electrónicos"
+                   FontAttributes="Bold"
+                   FontSize="20" />
+
+            <ListView x:Name="inventarioListView"
+                      ItemSelected="OnItemSelected"
+                      HeightRequest="200">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Nombre}"
+                                  Detail="{Binding Cantidad, StringFormat='Cantidad: {0}'}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Entry x:Name="nombreEntry" Placeholder="Nombre del aparato" />
+            <Entry x:Name="cantidadEntry" Placeholder="Cantidad" Keyboard="Numeric" />
+            <Entry x:Name="precioEntry" Placeholder="Precio" Keyboard="Numeric" />
+
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Button Text="Agregar" Clicked="OnAgregarClicked" />
+                <Button Text="Eliminar seleccionado" Clicked="OnEliminarClicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
